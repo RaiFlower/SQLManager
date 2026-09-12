@@ -28,6 +28,7 @@ public class Interface
         {
             case "CREATE":
             case "INSERT":
+            case "DELETE":
                 ExecuteNonQuerry(sql);
                 break;
             
@@ -41,15 +42,45 @@ public class Interface
     {
         var command = _connection.CreateCommand();
         command.CommandText = sql;
-        command.ExecuteNonQuery();
+        try
+        {
+            command.ExecuteNonQuery();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
     }
 
     private void ExecuteQuerry(string sql)
     {
         var command = _connection.CreateCommand();
         command.CommandText = sql;
-        var reader = command.ExecuteReader();
-        PrintTable(reader);
+        try
+        {
+            var reader = command.ExecuteReader();
+            PrintTable(reader);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+    public object? ExecuteScalar(string sql)
+    {
+        var command = _connection.CreateCommand();
+        command.CommandText = sql;
+        try
+        {
+            return command.ExecuteScalar();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+
+        return null;
     }
 
     private void PrintTable(DbDataReader reader)
@@ -69,6 +100,22 @@ public class Interface
             }
             Console.WriteLine();
         }
+    }
+
+    public List<T> GetColumn<T>(string tableName, string columnName)
+    {
+        var command = _connection.CreateCommand();
+        command.CommandText = $"SELECT {columnName} FROM {tableName}";
+        var reader = command.ExecuteReader();
+
+        List<T> values = new();
+
+        while (reader.Read())
+        {
+            values.Add((T)reader.GetValue(0));
+        }
+
+        return values;
     }
 
     public void ClearTable(string tableName)
@@ -95,7 +142,7 @@ public class Interface
         var tables = new List<string>();
 
         var command = _connection.CreateCommand();
-        command.CommandText = "SELECT name FROM sqlite_master WHERE type='table'";
+        command.CommandText = "SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' AND name NOT LIKE 'hidden_%'";
 
         using var reader = command.ExecuteReader();
         while (reader.Read())

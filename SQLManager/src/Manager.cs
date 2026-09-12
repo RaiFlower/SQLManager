@@ -11,10 +11,14 @@ public class Manager
     private Interface _interface = new();
     private ANSIFixer _ANSIFixer = new();
 
+    private const char SavedQuerryPrefix = '?';
+
     public void Start()
     {
         _interface = new();
         _interface.OpenConnection("db/test.db");
+
+        _interface.ExecuteSQL("CREATE TABLE IF NOT EXISTS hidden_SavedQuerries (Id INTEGER PRIMARY KEY, Name TEXT, QuerryString TEXT)");
 
         _ANSIFixer.EnableAnsiSupport();
 
@@ -39,6 +43,9 @@ public class Manager
                 Console.WriteLine("!Default: Build default table");
                 Console.WriteLine("!Clear: Clear table by name");
                 Console.WriteLine("!List: List all tables");
+                Console.WriteLine("!Save: Save SQL querry under given the name");
+                Console.WriteLine("!Forget: Forget saved SQL querry under the given name");
+                Console.WriteLine("!Saved: List all saved commands");
                 break;
             
             case "!Default":
@@ -55,6 +62,27 @@ public class Manager
             
             case "!List":
                 _interface.GetAllTableNames().ForEach(name => Console.WriteLine(_interface.GetTableColumns(name)));
+                break;
+            
+            case "!Save":
+                _interface.ExecuteSQL($"INSERT INTO hidden_SavedQuerries (Name, QuerryString) VALUES ('{command?.Split(' ')[1]}', '{command?.Split(' ', 3)[2]}')");
+                break;
+            
+            case "!Forget":
+                _interface.ExecuteSQL($"DELETE FROM hidden_SavedQuerries WHERE Name = '{command?.Split(' ')[1]}'");
+                break;
+            
+            case "!Saved":
+                List<string> names = _interface.GetColumn<string>("hidden_SavedQuerries", "Name");
+                List<string> querryStrings = _interface.GetColumn<string>("hidden_SavedQuerries", "QuerryString");
+                for (int i = 0; i < names.Count; i++)
+                {
+                    Console.WriteLine(SavedQuerryPrefix + names[i] + ": " + querryStrings[i]);
+                }
+                break;
+            
+            case var cmd when cmd?.StartsWith('?') ?? false:
+                _interface.ExecuteSQL((string)(_interface.ExecuteScalar($"SELECT QuerryString FROM hidden_SavedQuerries WHERE Name = '{command?[1..]}'") ?? ""));
                 break;
             
             case "CREATE":
