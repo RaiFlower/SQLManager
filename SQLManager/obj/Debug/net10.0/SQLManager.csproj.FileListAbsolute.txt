@@ -40,3 +40,4 @@ C:\My\Code\C#\SQLManager\SQLManager\bin\Debug\net10.0\runtimes\win-x64\native\e_
 C:\My\Code\C#\SQLManager\SQLManager\bin\Debug\net10.0\runtimes\win-x86\native\e_sqlite3.dll
 C:\My\Code\C#\SQLManager\SQLManager\obj\Debug\net10.0\SQLManager.csproj.AssemblyReference.cache
 C:\My\Code\C#\SQLManager\SQLManager\obj\Debug\net10.0\SQLManager.csproj.Up2Date
+C:\My\Code\C#\SQLManager\SQLManager\obj\Debug\net10.0\SQLManager.sourcelink.json
