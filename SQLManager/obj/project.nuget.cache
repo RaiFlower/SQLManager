@@ -1,15 +1,19 @@
 {
   "version": 2,
-  "dgSpecHash": "dzicdUi8rR0=",
+  "dgSpecHash": "w/sdtEoBQrM=",
   "success": true,
   "projectFilePath": "C:\\My\\Code\\C#\\SQLManager\\SQLManager\\SQLManager.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\microsoft.data.sqlite\\10.0.12\\microsoft.data.sqlite.10.0.12.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.data.sqlite.core\\10.0.12\\microsoft.data.sqlite.core.10.0.12.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.net.illink.tasks\\10.0.12\\microsoft.net.illink.tasks.10.0.12.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.12\\sqlitepclraw.bundle_e_sqlite3.2.1.12.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\sqlitepclraw.core\\2.1.12\\sqlitepclraw.core.2.1.12.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.12\\sqlitepclraw.lib.e_sqlite3.2.1.12.nupkg.sha512",
-    "C:\\Users\\User\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.12\\sqlitepclraw.provider.e_sqlite3.2.1.12.nupkg.sha512"
+    "C:\\Users\\User\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.12\\sqlitepclraw.provider.e_sqlite3.2.1.12.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\10.0.12\\microsoft.netcore.app.runtime.win-x64.10.0.12.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\10.0.12\\microsoft.windowsdesktop.app.runtime.win-x64.10.0.12.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\10.0.12\\microsoft.aspnetcore.app.runtime.win-x64.10.0.12.nupkg.sha512"
   ],
   "logs": []
 }

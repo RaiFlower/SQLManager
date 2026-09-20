@@ -15,12 +15,23 @@ public class Manager
 
     public void Start()
     {
+        string folderPath = Path.Combine(AppContext.BaseDirectory, "db");
+
+        if (!Directory.Exists(folderPath))
+        {
+            Directory.CreateDirectory(folderPath);
+        }
+
+        string dbPath = Path.Combine(folderPath, "test.db");
+
         _interface = new();
-        _interface.OpenConnection("db/test.db");
+        _interface.OpenConnection(dbPath);
 
         _interface.ExecuteSQL("CREATE TABLE IF NOT EXISTS hidden_SavedQuerries (Id INTEGER PRIMARY KEY, Name TEXT, QuerryString TEXT)");
 
         _ANSIFixer.EnableAnsiSupport();
+
+        Console.Title = "SQL Manager";
 
         Update();
     }
@@ -43,9 +54,9 @@ public class Manager
                 Console.WriteLine("!Default: Build default table");
                 Console.WriteLine("!Clear: Clear table by name");
                 Console.WriteLine("!List: List all tables");
-                Console.WriteLine("!Save: Save SQL querry under given the name");
+                Console.WriteLine("!Save: Save SQL querry under  thegiven name");
                 Console.WriteLine("!Forget: Forget saved SQL querry under the given name");
-                Console.WriteLine("!Saved: List all saved commands");
+                Console.WriteLine("!Saved: List all saved querries");
                 break;
             
             case "!Default":
@@ -88,6 +99,8 @@ public class Manager
             case "CREATE":
             case "INSERT":
             case "SELECT":
+            case "DELETE":
+            case "DROP":
                 _interface.ExecuteSQL(command);
                 break;
 

@@ -29,6 +29,7 @@ public class Interface
             case "CREATE":
             case "INSERT":
             case "DELETE":
+            case "DROP":
                 ExecuteNonQuerry(sql);
                 break;
             

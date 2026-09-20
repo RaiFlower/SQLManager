@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SQLManager")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1a9cfc4a1faff72d4c59fbc2158f829fae8c8b94")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+201bba92ad883f39c038936eb49329b7610fc338")]
 [assembly: System.Reflection.AssemblyProductAttribute("SQLManager")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SQLManager")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
